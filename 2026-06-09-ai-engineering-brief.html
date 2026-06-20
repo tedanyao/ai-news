@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-06-09</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">June 9, 2026</p>
+<h1>AI Engineering Brief - 2026-06-09</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: configuration is becoming the real leverage point for AI agents. Codex is expanding from coding into role-specific knowledge work, while recent research and security incidents show that agent behavior is strongly shaped by plugins, instructions, MCP tools, dependency policies, and credential boundaries. For daily engineering work, the practical upgrade is to treat agent configuration like production configuration: explicit, reviewed, minimal, and auditable.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>Three current threads fit together:</p>
+<ul>
+<li>OpenAI&#x27;s June 2 Codex update introduces role-specific plugins, annotations, and shareable Sites, pushing Codex further from &quot;coding assistant&quot; toward configurable workflow engine.</li>
+<li>A new ESEM 2026 registered study protocol focuses on how configuration mechanisms in Claude Code and OpenAI Codex affect build-versus-buy decisions: whether agents implement code from scratch or introduce external libraries.</li>
+<li>Cloud Security Alliance&#x27;s CodexUI research note shows the supply-chain risk of AI developer tooling: a useful third-party Codex remote UI package allegedly gained a real user base, then exfiltrated Codex OAuth credentials from local files.</li>
+</ul>
+<p>The pattern: agent power is moving into the surrounding configuration layer. That layer can make agents more useful, but it can also quietly change dependencies, permissions, credentials, and tool behavior.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Treat Agent Configuration As Code</h3>
+<p>Agent instructions, skills, plugin choices, MCP servers, and permission profiles should be managed with the same seriousness as CI config or deployment config.</p>
+<p>For any shared repo, review:</p>
+<ul>
+<li><code>AGENTS.md</code>, <code>CLAUDE.md</code>, rules files, or custom instructions</li>
+<li>MCP server configuration</li>
+<li>Tool allowlists and deny lists</li>
+<li>Permission modes</li>
+<li>Dependency-install policy</li>
+<li>Network access policy</li>
+<li>Credential file locations and handling</li>
+</ul>
+<p>If an agent can read it, follow it, or call it, it is part of the runtime.</p>
+<h3>2. Add A Build-Versus-Buy Rule</h3>
+<p>The new build-versus-buy study protocol is valuable because it names a quiet agent behavior: agents decide whether to import a dependency or implement something from scratch. That decision affects security, licensing, performance, and maintenance.</p>
+<p>Add this rule to agent prompts:</p>
+<pre><code>Before adding any new dependency:
+- explain why existing code or standard library support is insufficient
+- list security, license, maintenance, and performance tradeoffs
+- show where the dependency will be used
+- wait for approval</code></pre>
+<p>For Go/backend/platform work, this is especially important for HTTP clients, auth libraries, Kubernetes clients, YAML/JSON parsing, observability packages, test frameworks, and CLI helpers.</p>
+<h3>3. Use Plugins As Narrow Workflow Adapters</h3>
+<p>OpenAI&#x27;s role-specific Codex plugins are a useful direction, but the principle applies broadly: plugins should adapt an agent to a workflow, not dump every possible tool into context.</p>
+<p>Good plugin/tool design:</p>
+<ul>
+<li>Exposes a narrow action</li>
+<li>Has clear read/write boundaries</li>
+<li>Uses least privilege</li>
+<li>Produces auditable output</li>
+<li>Avoids hidden network side effects</li>
+<li>Documents what context it reads</li>
+</ul>
+<p>Bad plugin/tool design:</p>
+<ul>
+<li>Broad filesystem access</li>
+<li>Broad network access</li>
+<li>Hidden credential reads</li>
+<li>Vague &quot;automate everything&quot; behavior</li>
+<li>No logs or review surface</li>
+</ul>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>Make A Personal Agent Config Review Checklist</h3>
+<p>Before adopting a new AI CLI, plugin, MCP server, or extension, ask:</p>
+<ul>
+<li>Who publishes it?</li>
+<li>Is the package name exactly what I intended?</li>
+<li>Is the source repository the same artifact that gets installed?</li>
+<li>Does it read local credential files?</li>
+<li>Does it make outbound network calls?</li>
+<li>Does it require global install?</li>
+<li>Does it run on import or startup?</li>
+<li>Can I pin the version?</li>
+<li>Can I run it in a sandbox or separate account first?</li>
+</ul>
+<p>This is not paranoia. The CodexUI incident is a reminder that useful AI devtools are now attractive supply-chain targets.</p>
+<h3>Prefer Narrow Context Over More Context</h3>
+<p>Codex for knowledge work emphasizes connecting Codex to the tools and context teams already use. That is useful, but for engineering work the best context is not &quot;everything.&quot; It is the smallest context that lets the agent act correctly.</p>
+<p>Practical habit:</p>
+<ul>
+<li>Give the agent the issue, relevant files, and validation command</li>
+<li>Avoid connecting broad document stores unless necessary</li>
+<li>Prefer read-only tools for discovery</li>
+<li>Make write-capable tools explicit</li>
+<li>Keep credentials out of ordinary context</li>
+</ul>
+<p>The strongest agents are often the ones with the clearest boundaries.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create an <code>agent-config-audit.md</code> file for one repo or local setup.</p>
+<pre><code># Agent Config Audit
+
+## Instruction Files
+
+## Enabled Tools / Plugins / MCP Servers
+
+## Read Permissions
+
+## Write Permissions
+
+## Network Access
+
+## Credential Touchpoints
+
+## Dependency Policy
+
+## Approval Required For
+
+## Known Risks</code></pre>
+<p>Start small. Fill it out for the tools you actually use: Codex, Claude Code, Copilot CLI, Cursor, Aider, or any MCP servers. The goal is to know what your agent environment can do before it surprises you.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>Codex Role Plugins, Sites, And Annotations</h3>
+<p>OpenAI&#x27;s June 2 Codex update adds role-specific plugins, annotations for refining work in place, and a preview of shareable interactive Sites. The interesting part is not only broader use by non-developers. It is that Codex is becoming more configurable around roles, artifacts, and workflow surfaces.</p>
+<p>Why it matters: configuration and artifact review become core skills. A software engineer can use the same pattern for technical workflows: bug triage plugin, incident-summary plugin, test-plan plugin, migration-plan plugin.</p>
+<h3>Codex As Knowledge-Work Automation</h3>
+<p>OpenAI also released a report-focused post saying Codex is increasingly used for reports, spreadsheets, presentations, research, data analysis, workflow automation, and lightweight internal tools.</p>
+<p>Why it matters: platform engineers may increasingly support non-engineers building small tools with agents. Your role may shift toward guardrails, internal APIs, templates, and reviewable workflows.</p>
+<h3>CodexUI Credential Theft Report</h3>
+<p>Cloud Security Alliance summarized the codexui-android incident: a third-party npm package and related Android apps allegedly exfiltrated Codex OAuth credentials from local files after first establishing legitimate utility and real usage.</p>
+<p>Why it matters: AI developer tooling is now a supply-chain attack surface. Remote UIs, MCP servers, wrappers, and convenience packages deserve real scrutiny.</p>
+<h3>Build-Versus-Buy Configuration Research</h3>
+<p>The new ESEM 2026 study protocol will test how context files, explicit prohibitions, Skills, MCP-enabled library discovery, and permission controls affect Claude Code and OpenAI Codex dependency choices.</p>
+<p>Why it matters: this is exactly the kind of empirical work agent users need. It treats configuration as a measurable lever, not folklore.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Add this dependency policy to your agent instructions:</p>
+<pre><code>Dependency policy:
+- Do not add new dependencies without approval.
+- Prefer standard library and existing project dependencies.
+- If a new dependency seems necessary, stop and provide a build-vs-buy analysis.
+- Include license, maintenance, security, transitive dependency, and version-pinning notes.</code></pre>
+<p>This one rule can prevent a surprising amount of agent-created maintenance risk.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read the Cloud Security Alliance CodexUI note if you use AI devtool wrappers, remote UIs, or npm-installed agent helpers. The important lesson is not &quot;avoid all third-party tools.&quot; It is: useful tools can become credential-harvesting infrastructure, and published packages can differ from public source repositories.</p>
+<p>Then read OpenAI&#x27;s Codex role/workflow update. It is the clearest product signal that agents are becoming configurable work surfaces, not just code generators.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Run a &quot;dependency preflight&quot; on a current repo.</p>
+<p>Prompt:</p>
+<pre><code>Inspect this repo&#x27;s dependency policy and current dependency set.
+Do not edit files.
+Report:
+- primary package/dependency files
+- existing dependency categories
+- risky or broad dependencies
+- where new dependencies should require approval
+- suggested agent instruction for dependency additions</code></pre>
+<p>Then paste the resulting dependency policy into your repo instruction file.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip generic posts that frame agent productivity only as speed. The better question is whether the agent&#x27;s configuration improves correctness, security, reviewability, and maintainability.</p>
+<p>Also skip tool recommendations that do not mention installation source, permissions, credential handling, version pinning, or network behavior. Convenience is not enough anymore.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openai.com/index/codex-for-every-role-tool-workflow/">Codex for every role, tool, and workflow - OpenAI</a></li>
+<li><a href="https://openai.com/index/codex-for-knowledge-work/">Codex is becoming a productivity tool for everyone - OpenAI</a></li>
+<li><a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">How OpenAI uses Codex - OpenAI PDF</a></li>
+<li><a href="https://openai.com/index/running-codex-safely/">Running Codex safely at OpenAI</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/06/CSA_research_note_ai_developer_supply_chain_codexui_20260601-csa-styled.pdf">Cloud Security Alliance: AI developer supply-chain research note on CodexUI</a></li>
+<li><a href="https://arxiv.org/abs/2606.03907">The Impact of Configuring Agentic AI Coding Tools on Build-vs-Buy Decisions - arXiv</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+<li><a href="https://code.claude.com/docs/en/how-claude-code-works">How Claude Code works - Anthropic Docs</a></li>
+<li><a href="https://github.blog/changelog/2026-06-02-copilot-cli-improved-ui-rubber-duck-prompt-scheduling-and-voice-input/">Copilot CLI: Improved UI, rubber duck, prompt scheduling, and voice input - GitHub Changelog</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

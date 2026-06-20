@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-06-08</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">June 8, 2026</p>
+<h1>AI Engineering Brief - 2026-06-08</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: agent workflow maturity is now about control surfaces. The strongest recent updates are not just more capable coding agents; they are safer execution, searchable session history, planning before implementation, cost controls, and exfiltration reduction. For daily engineering work, the practical upgrade is to make agents observable before they become autonomous.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>Several recent sources point in the same direction:</p>
+<ul>
+<li>OpenAI&#x27;s Lockdown Mode is now rolling out as an advanced security setting for ChatGPT and supported OpenAI products. It reduces prompt-injection data-exfiltration risk by limiting outbound network requests, but it does not affect Codex network access.</li>
+<li>GitHub&#x27;s recent VS Code Copilot updates make agent sessions more persistent and inspectable: an Agents window in stable preview, remote sessions over SSH or Dev Tunnels, session sync, <code>/chronicle</code> for querying past sessions, and model/BYOK controls.</li>
+<li>GitHub&#x27;s Visual Studio update adds a Plan agent that explores the codebase with read-only tools and saves a markdown implementation plan before handing off to Agent mode.</li>
+<li>Simon Willison&#x27;s recent notes reinforce two application-side realities: sandboxed code execution is becoming a core design requirement, and AI budget/cost limits are becoming normal for serious agent usage.</li>
+</ul>
+<p>The pattern: agents are moving from &quot;write this code&quot; to &quot;operate inside a governed workflow.&quot;</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Prefer Plan-First Agent Work</h3>
+<p>GitHub&#x27;s Plan agent pattern is worth copying even if you are not using Visual Studio.</p>
+<p>Before code changes, ask the agent to create a plan artifact:</p>
+<pre><code>Use read-only exploration first.
+Create a markdown implementation plan with:
+- goal
+- relevant files
+- proposed changes
+- validation commands
+- risks
+- stop conditions
+
+Do not edit files until I approve the plan.</code></pre>
+<p>This separates understanding from editing. That is especially valuable for backend/platform work where a small code diff can have wide blast radius.</p>
+<h3>2. Make Session History Queryable</h3>
+<p>GitHub&#x27;s <code>/chronicle</code> and session sync features are a hint: agent transcripts are becoming operational data. You should not have to reread a long chat to understand what happened.</p>
+<p>For your own workflow, ask every meaningful agent session to end with:</p>
+<ul>
+<li>What was investigated</li>
+<li>What was changed</li>
+<li>What evidence was collected</li>
+<li>What failed or was skipped</li>
+<li>What remains risky</li>
+<li>What should be remembered next time</li>
+</ul>
+<p>Save that in <code>WORKLOG.md</code>, a PR comment, or the issue thread. The important thing is that future-you and future-agents can search it.</p>
+<h3>3. Treat Exfiltration As A Workflow Risk</h3>
+<p>Lockdown Mode is important because it frames prompt injection in practical terms: the dangerous final step is often outbound data exfiltration. The same idea applies to local coding agents.</p>
+<p>For agent tasks that involve sensitive context:</p>
+<ul>
+<li>Avoid unnecessary web access</li>
+<li>Avoid connecting unknown MCP servers</li>
+<li>Prefer read-only tools first</li>
+<li>Do not paste secrets into agent context</li>
+<li>Use sandboxed or isolated runtimes for generated code</li>
+<li>Require approval before network calls, package installs, credential access, or production commands</li>
+</ul>
+<p>For Codex specifically, remember that OpenAI&#x27;s Lockdown Mode does not control Codex network access. Codex still needs its own permission and network policy discipline.</p>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>The New Daily Skill: Control The Work Surface</h3>
+<p>The recurring application-side pattern is not &quot;use more AI.&quot; It is &quot;choose the right work surface for the task.&quot;</p>
+<p>Use:</p>
+<ul>
+<li>Chat for brainstorming and quick explanation</li>
+<li>Plan artifact for non-trivial implementation</li>
+<li>Worktree for isolated code changes</li>
+<li>Sandbox for running generated code</li>
+<li>Issue/PR for team-visible delegation</li>
+<li><code>WORKLOG.md</code> for durable memory</li>
+<li><code>AGENTS.md</code> or <code>CLAUDE.md</code> for repo rules</li>
+<li>Budget/usage view for long-running agent work</li>
+</ul>
+<p>If the task has risk, ambiguity, or cost, move it out of raw chat and into a structured surface.</p>
+<h3>Use Sandboxes For Generated Code, Not Just Production Risk</h3>
+<p>Simon Willison&#x27;s MicroPython/WASM sandbox experiment is a good practitioner signal: safe code execution is useful even for small generated scripts. The point is not that everyone should use MicroPython. The point is that code execution boundaries are becoming part of ordinary AI tooling.</p>
+<p>Practical examples:</p>
+<ul>
+<li>Run quick data transforms in a disposable environment</li>
+<li>Execute generated scripts without local filesystem/network access</li>
+<li>Test parsing logic before letting an agent touch repo files</li>
+<li>Validate examples from docs or Stack Overflow-like sources in isolation</li>
+</ul>
+<p>This is especially relevant for platform engineers because generated scripts often want shell, filesystem, cloud, or Kubernetes access.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Add a &quot;control surface selector&quot; to your agent prompts.</p>
+<pre><code>Before starting, choose the safest workflow surface for this task:
+- chat only
+- read-only investigation
+- markdown plan
+- isolated worktree
+- sandboxed execution
+- PR/issue delegation
+- scheduled/background task
+
+Explain why, then proceed only within that mode.</code></pre>
+<p>This is a compact habit, but it forces the agent to think about risk and operating mode before doing work.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>OpenAI Lockdown Mode</h3>
+<p>OpenAI&#x27;s Lockdown Mode is rolling out to eligible personal accounts and self-serve ChatGPT Business accounts. It limits network-enabled capabilities to reduce prompt-injection-based data exfiltration risk. It is useful for sensitive work, but OpenAI explicitly notes it does not prevent all prompt injection effects and does not affect Codex.</p>
+<p>Why it matters: security controls are becoming user-facing workflow choices, not only enterprise admin settings.</p>
+<h3>GitHub Copilot In VS Code: Agents Window And Session Sync</h3>
+<p>The June 3 GitHub changelog says the VS Code Copilot May releases brought an Agents window in stable preview, remote agent sessions, session preference persistence, Git flow improvements, session sync to GitHub, and <code>/chronicle</code> for querying past sessions and generating standup reports.</p>
+<p>Why it matters: persistent agent state and searchable history are becoming normal. That directly supports better handoffs, reviews, and daily productivity.</p>
+<h3>GitHub Copilot In Visual Studio: Plan Agent</h3>
+<p>The June 4 Visual Studio update adds a Plan agent that uses read-only tools, asks clarifying questions, and writes a markdown plan before implementation.</p>
+<p>Why it matters: &quot;plan before build&quot; is becoming a product primitive. You can adopt the same behavior in Codex or Claude Code today.</p>
+<h3>MCP Release Candidate Still Matters</h3>
+<p>The MCP 2026-07-28 release candidate remains important: stateless core, Apps, Tasks, auth hardening, and deprecation policy. The short version is that MCP is becoming more production-shaped, but the implementation burden moves to careful auth, scopes, auditing, and deployment discipline.</p>
+<p>Why it matters: if you expose internal tools to agents, treat MCP servers as production integration surfaces.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>For your next medium-risk task, use this three-step prompt:</p>
+<pre><code>Step 1: Investigate with read-only tools. Produce a concise plan.
+Step 2: Wait for my approval.
+Step 3: Implement in the smallest safe diff and report validation evidence.</code></pre>
+<p>Add this stop condition:</p>
+<pre><code>Stop if the task requires network access, credentials, production data, dependency installation, or changes outside the approved files.</code></pre>
+<p>This combines the best recent patterns: plan-first, approval gate, small diff, and exfiltration-aware boundaries.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read OpenAI&#x27;s Lockdown Mode help page and Simon Willison&#x27;s commentary together. The useful mental model is the &quot;exfiltration leg&quot; of prompt injection risk: if an agent can see private data, read untrusted instructions, and send data out, you have a dangerous combination.</p>
+<p>Then skim GitHub&#x27;s VS Code Copilot May releases. The <code>/chronicle</code>, session sync, and remote-agent details are easy to overlook, but they are exactly the features that make agent work more inspectable.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Create a Monday/weekly &quot;agent work ledger.&quot;</p>
+<pre><code># Agent Work Ledger
+
+## Active Agent Tasks
+
+## Plans Approved
+
+## Changes Landed
+
+## Validation Evidence
+
+## Costs / Usage Notes
+
+## Risks Accepted
+
+## Follow-ups</code></pre>
+<p>Use it for one week. The goal is not bureaucracy; it is to make your AI-assisted work visible enough that you can improve it.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip hype posts about fully autonomous development unless they show the surrounding control system: permissions, sandbox, validation, review, session history, cost controls, and rollback.</p>
+<p>Also skip community panic about prompt injection if it does not translate into specific mitigations. The useful question is: which capability should be removed, restricted, logged, or gated by approval?</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://help.openai.com/en/articles/20001061-lockdown-mode">Lockdown Mode - OpenAI Help Center</a></li>
+<li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes - OpenAI Help Center</a></li>
+<li><a href="https://openai.com/index/running-codex-safely/">Running Codex safely at OpenAI</a></li>
+<li><a href="https://github.blog/changelog/2026-06-03-github-copilot-in-visual-studio-code-may-releases/">GitHub Copilot in Visual Studio Code, May releases - GitHub Changelog</a></li>
+<li><a href="https://github.blog/changelog/2026-06-04-github-copilot-in-visual-studio-may-update/">GitHub Copilot in Visual Studio, May update - GitHub Changelog</a></li>
+<li><a href="https://github.blog/changelog/2026-06-01-updates-to-github-copilot-billing-and-plans">Updates to GitHub Copilot billing and plans - GitHub Changelog</a></li>
+<li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/">The 2026-07-28 MCP Specification Release Candidate - Model Context Protocol Blog</a></li>
+<li><a href="https://simonwillison.net/2026/Jun/6/micropython-wasm/">Running Python code in a sandbox with MicroPython and WASM - Simon Willison</a></li>
+<li><a href="https://simonwillison.net/2026/Jun/5/lockdown-mode/">OpenAI Help: Lockdown Mode - Simon Willison</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

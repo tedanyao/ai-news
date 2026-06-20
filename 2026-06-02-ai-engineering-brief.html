@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-06-02</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">June 2, 2026</p>
+<h1>AI Engineering Brief - 2026-06-02</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: agent work is becoming observable, schedulable, and billable. GitHub&#x27;s Build-day Copilot updates push agent workflows beyond chat: built-in critic review, prompt scheduling, cloud/local sandboxes, app canvases, shared session views, SDK access, and usage-based billing. The practical lesson for your workflow is to treat agent work like a small production system: define the job, constrain the environment, schedule checks, inspect state, and watch cost.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>GitHub&#x27;s June 2 updates are unusually relevant to this project because they are application-side rather than just model-side.</p>
+<p>Copilot CLI now has:</p>
+<ul>
+<li>A built-in &quot;rubber duck&quot; critic agent</li>
+<li><code>/every</code> and <code>/after</code> prompt scheduling</li>
+<li>Voice input with local speech-to-text</li>
+<li>An experimental terminal UI with tabs for issues, pull requests, and gists</li>
+</ul>
+<p>The Copilot app preview also expanded and introduced canvases: structured work surfaces where humans and agents can inspect, edit, approve, redirect, and verify work. The same update emphasizes parallel worktrees, integrated terminal/browser validation, MCP, reusable skills, scheduled automations, agentic browsing, and a shared session view across app and CLI.</p>
+<p>Separately, GitHub&#x27;s cloud/local sandboxes and Copilot SDK announcements make the platform direction clear: agent execution is moving into governed runtimes that teams can embed, trace, isolate, and bill.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Add A Critic Pass As A Default Step</h3>
+<p>GitHub&#x27;s rubber duck feature is a useful signal because it turns &quot;ask for a second opinion&quot; into a first-class workflow primitive. You do not need Copilot CLI to adopt the pattern.</p>
+<p>For any non-trivial task, add this review step:</p>
+<pre><code>Before continuing, review your current plan/design/tests as a critic.
+Look for:
+- hidden assumptions
+- scope creep
+- missing tests
+- risky commands
+- production impact
+- simpler alternatives
+
+Return concrete feedback and revise the plan only after the critique.</code></pre>
+<p>This is especially useful before agents edit infrastructure, auth, migrations, shared libraries, CI, or Kubernetes manifests.</p>
+<h3>2. Schedule Agent Checks, Not Just Agent Work</h3>
+<p>The new <code>/every</code> and <code>/after</code> commands in Copilot CLI are interesting because they make recurring checks part of an active session. The obvious use is &quot;run tests every 30 minutes,&quot; but the better pattern is scheduling evidence collection.</p>
+<p>Useful scheduled prompts:</p>
+<ul>
+<li>Every 30 minutes: summarize what changed and what evidence exists</li>
+<li>Every hour: report token/credit usage and stop if the task is drifting</li>
+<li>After 20 minutes: ask whether the current approach still matches the original scope</li>
+<li>After a test run: summarize failures by likely root cause, not raw output</li>
+</ul>
+<p>This turns the agent from a long-running black box into something that periodically produces reviewable state.</p>
+<h3>3. Use Sandboxes As A Workflow Boundary</h3>
+<p>GitHub&#x27;s cloud and local sandbox preview matters for platform engineers. Sandboxing is not just security theater; it is what makes autonomous tool execution usable.</p>
+<p>Practical distinction:</p>
+<ul>
+<li>Local sandbox: good for repo work that needs your local files but should have limited filesystem/network access</li>
+<li>Cloud sandbox: good for parallel experiments, reproducible throwaway work, and offloading compute without touching your laptop state</li>
+</ul>
+<p>The important habit is to choose the runtime before starting the task. If the task is exploratory, risky, or potentially messy, put it in a sandbox or worktree first.</p>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>Agent Canvases Are A Hint About The Future</h3>
+<p>GitHub describes canvases as shared work surfaces where the agent updates a structured artifact and the human can inspect, edit, reorder, approve, or redirect it. That is the right mental model even outside Copilot.</p>
+<p>You can simulate a canvas today with Markdown:</p>
+<pre><code># Agent Canvas
+
+## Goal
+
+## Current Plan
+
+## Evidence Collected
+
+## Decisions Needed
+
+## Diff Summary
+
+## Validation
+
+## Risks
+
+## Next Action</code></pre>
+<p>Ask the agent to keep this updated during longer work. It is better than relying on a scrolling transcript because the important state has a fixed place to live.</p>
+<h3>Cost Is Now Part Of Agent Workflow Design</h3>
+<p>GitHub&#x27;s move to usage-based Copilot billing started June 1. The practical point is not just pricing; it is that long-running agent sessions now have an operational cost shape. Large context, long outputs, cached tokens, code review, and cloud sandbox compute can all matter.</p>
+<p>Cost-aware agent habits:</p>
+<ul>
+<li>Use narrow prompts and specific repo context</li>
+<li>Ask for file maps before dumping huge files</li>
+<li>Prefer targeted <code>rg</code> searches over broad &quot;read the whole repo&quot;</li>
+<li>Stop or summarize long sessions before they drift</li>
+<li>Use cheaper/fast models for exploration when possible</li>
+<li>Save reusable findings in <code>WORKLOG.md</code> or <code>AGENTS.md</code></li>
+<li>Treat scheduled prompts as useful only when they produce real evidence</li>
+</ul>
+<p>This is not about being cheap. It is about keeping agent work intentional.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create a &quot;session heartbeat&quot; prompt for any agent task expected to run more than 15 minutes.</p>
+<pre><code>Every time you complete a meaningful step, update this heartbeat:
+
+Goal:
+Current hypothesis:
+Files inspected:
+Files changed:
+Validation run:
+Evidence:
+Open risks:
+Next action:
+Stop condition:
+
+If the next action expands scope, stop and ask.</code></pre>
+<p>This is the lightweight version of canvases, scheduled prompts, and session observability. It makes the agent&#x27;s work inspectable without needing a new tool.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>GitHub Copilot CLI: Rubber Duck, Scheduling, Voice</h3>
+<p>GitHub Copilot CLI&#x27;s Build refresh added a built-in critic agent, prompt scheduling with <code>/every</code> and <code>/after</code>, local voice input, and an experimental terminal UI with repository tabs.</p>
+<p>Why it matters: these are workflow primitives, not just UI features. Critique, recurring checks, and better issue/PR context are exactly what agent work needs to become reviewable.</p>
+<h3>GitHub Copilot App: Canvases And Shared Work State</h3>
+<p>The Copilot app technical preview is now available to more Copilot customers and adds canvases, cloud sessions, cloud automations, app/CLI session sharing, agentic browsing, and <code>/chronicle</code> for querying prior agent session data.</p>
+<p>Why it matters: agent UX is moving from &quot;chat transcript&quot; to &quot;visible work state.&quot; That is a better fit for software engineering, where plans, diffs, tests, and risk need to stay inspectable.</p>
+<h3>GitHub Copilot Sandboxes</h3>
+<p>Cloud and local sandboxes for Copilot are now in public preview. Local sandboxes restrict filesystem/network/system access on your machine. Cloud sandboxes run in isolated GitHub-hosted Linux environments and can be resumed across devices.</p>
+<p>Why it matters: agent adoption in real teams needs execution isolation, policy, and lifecycle control. This is especially relevant for platform and infra workflows.</p>
+<h3>Copilot SDK GA</h3>
+<p>The Copilot SDK is now generally available across Node/TypeScript, Python, Go, .NET, Rust, and Java. It exposes planning, tool invocation, file edits, streaming, multi-turn sessions, MCP/custom tools, prompt customization, tracing, auth options, cloud/remote sessions, and hooks.</p>
+<p>Why it matters: internal developer tools can embed agent workflows instead of shelling out to a chat UI. For platform teams, this points toward internal agents with real tracing, permissions, and tool governance.</p>
+<h3>Codex And Claude Code Runtime Details</h3>
+<p>Codex 0.135.0 added richer diagnostics, remote connection status, named permission profiles, and sandbox presets in the Python SDK. Claude Code&#x27;s recent changelog focuses on long-session memory/performance, background agent control, permission prompt clarity, and concurrent-agent fixes.</p>
+<p>Why it matters: the &quot;boring&quot; runtime details are where agent productivity lives.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Before launching a long-running agent task, classify it:</p>
+<pre><code>Runtime:
+- local unsandboxed
+- local sandboxed
+- cloud sandbox
+- separate worktree
+- no-edit investigation
+
+Review:
+- critic pass required?
+- scheduled heartbeat required?
+- final diff review required?
+
+Cost:
+- expected session length
+- expected model/tool usage
+- stop if scope expands?</code></pre>
+<p>This makes you choose the right operating mode before the agent starts spending time, tokens, or risk budget.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read GitHub&#x27;s Copilot app preview post first. The idea of canvases is probably the most important application-side concept today: agent output needs to become visible work state, not buried chat.</p>
+<p>Then read the sandboxes documentation. For backend/platform work, sandboxing is the bridge between &quot;cool demo&quot; and &quot;something I can safely use near real code.&quot;</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Run one agent task today with a heartbeat and critic pass.</p>
+<p>Prompt:</p>
+<pre><code>Use a session heartbeat while working.
+Before editing, fill in Goal, Current hypothesis, Files to inspect, Validation, Risks, and Stop condition.
+After your initial plan, run a critic pass against the plan.
+Then proceed only if the plan is still within scope.
+After work, update the heartbeat with files changed, validation evidence, and remaining risks.</code></pre>
+<p>Use it on something small:</p>
+<ul>
+<li>PR description cleanup</li>
+<li>one failing test</li>
+<li>one docs/runbook update</li>
+<li>one CI failure investigation</li>
+<li>one narrow refactor</li>
+</ul>
+<p>The point is to practice observable delegation.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip Build recap articles that only say &quot;agents are the future.&quot; The useful news is specific: critic agents, scheduled prompts, sandboxes, shared session state, SDK hooks, tracing, and usage controls.</p>
+<p>Also skip Reddit cost panic as a primary source. Treat it as a signal to watch your own usage, but rely on GitHub&#x27;s billing docs and your actual usage page for decisions.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://github.blog/changelog/2026-06-02-copilot-cli-improved-ui-rubber-duck-prompt-scheduling-and-voice-input/">Copilot CLI: Improved UI, rubber duck, prompt scheduling, and voice input - GitHub Changelog</a></li>
+<li><a href="https://github.blog/changelog/2026-06-02-expanded-technical-preview-availability-for-the-github-copilot-app/">Expanded technical preview availability for the GitHub Copilot app - GitHub Changelog</a></li>
+<li><a href="https://github.blog/changelog/2026-06-02-cloud-and-local-sandboxes-for-github-copilot-now-in-public-preview/">Cloud and local sandboxes for GitHub Copilot now in public preview - GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes">About cloud and local sandboxes for GitHub Copilot - GitHub Docs</a></li>
+<li><a href="https://github.blog/changelog/2026-06-02-copilot-sdk-is-now-generally-available/">Copilot SDK is now generally available - GitHub Changelog</a></li>
+<li><a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/">GitHub Copilot is moving to usage-based billing - GitHub Blog</a></li>
+<li><a href="https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-%CF%83%CE%B7%CE%BC%CE%B5%CE%B9%CF%8E%CF%83%CE%B5%CE%B9%CF%82-%CE%AD%CE%BA%CE%B4%CE%BF%CF%83%CE%B7%CF%82">ChatGPT Enterprise &amp; Edu release notes - OpenAI Help Center</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

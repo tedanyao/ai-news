@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-05-26</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">May 26, 2026</p>
+<h1>AI Engineering Brief - 2026-05-26</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: the best agent workflows are becoming &quot;scope-first, verify-always.&quot; Codex, Claude Code, GitHub Copilot, MCP, and Google Antigravity are all moving toward longer-running, more integrated agent sessions. That makes the human role more important, not less: define the boundary, give the agent a way to check itself, and make review checkpoints explicit.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>Agent tools are converging on the same workflow shape:</p>
+<ul>
+<li>Start from a concrete task, issue, or repo context</li>
+<li>Let the agent work in an isolated session or worktree</li>
+<li>Give it tools for search, tests, browser/terminal validation, and MCP-connected systems</li>
+<li>Review plan, diff, logs, and test output</li>
+<li>Keep the session resumable from another surface such as web, phone, desktop, or CLI</li>
+</ul>
+<p>OpenAI&#x27;s safety write-up for Codex describes the production version of this posture: bounded execution, low-risk actions made smooth, higher-risk actions stopped for review, managed configuration, network policy, and agent-native logs.</p>
+<p>GitHub&#x27;s new Copilot app technical preview points the same way: start from GitHub context, work in focused sessions, validate with terminal/browser, open the PR, then use Agent Merge to handle follow-through under existing checks and merge requirements.</p>
+<p>Claude Code&#x27;s power-user guide is the most application-side source today. Its strongest practical claim is simple: the single highest-impact habit is verification, meaning you give Claude a way to check its own work.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Make &quot;Do Nothing&quot; A Valid Outcome</h3>
+<p>A new paper, Overeager Coding Agents, is useful because it measures a failure mode engineers feel in practice: agents often edit beyond the authorized scope. The authors found overeager behavior across Claude Code, Codex CLI, Gemini CLI, and OpenHands, and showed that how the harness frames permission boundaries changes behavior materially.</p>
+<p>Practical takeaway: tell agents when not changing code is acceptable.</p>
+<p>Use this instruction:</p>
+<pre><code>If the correct answer is that no code change is needed, say so and explain the evidence.
+Do not modify unrelated files. If you discover extra issues, list them as follow-ups instead of fixing them.</code></pre>
+<p>This is especially important for bug triage, config review, Kubernetes changes, dependency upgrades, and PR cleanup.</p>
+<h3>2. Treat Verification As Part Of The Prompt, Not A Follow-Up</h3>
+<p>Claude Code&#x27;s power-user guidance says verification is the highest-impact practice. That matches the Codex/GitHub direction: agents are becoming more autonomous, so the validation loop has to be built into the task.</p>
+<p>For every delegated task, include:</p>
+<ul>
+<li>The command that proves success</li>
+<li>The log, endpoint, screenshot, or diff to inspect</li>
+<li>The negative case that should still fail</li>
+<li>The rollback path if the agent&#x27;s change is risky</li>
+</ul>
+<p>Weak prompt:</p>
+<pre><code>Fix the failing test.</code></pre>
+<p>Better prompt:</p>
+<pre><code>Fix the failing test. First identify the failing assertion and likely cause. Change only the minimal relevant files. Validate with `go test ./...` and report any tests you could not run. If the failure points to an environment issue, stop and explain instead of rewriting code.</code></pre>
+<h3>3. Split Parallel Work With Worktrees</h3>
+<p>Claude Code&#x27;s power-user guide recommends running multiple sessions in parallel, each in its own git worktree. This is one of the most practical application-side patterns for experienced engineers.</p>
+<p>Good use cases:</p>
+<ul>
+<li>One agent investigates a flaky test while another drafts docs</li>
+<li>One agent explores a refactor while another checks migration risk</li>
+<li>One agent writes tests while another audits the implementation</li>
+</ul>
+<p>Bad use cases:</p>
+<ul>
+<li>Multiple agents editing the same core files</li>
+<li>Security-sensitive changes without tight review</li>
+<li>Large refactors without a crisp interface boundary</li>
+</ul>
+<p>For your workflow, the safe version is 2 sessions, not 5: one implementation agent and one reviewer/critic agent.</p>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>The Useful CLI Pattern Is Not &quot;One Magic CLI&quot;</h3>
+<p>The pattern worth adopting is an agent plus boring tools:</p>
+<ul>
+<li><code>rg</code> or <code>fd</code> for repo discovery</li>
+<li><code>gh</code> for issues, PRs, review comments, and checks</li>
+<li><code>jq</code> or <code>yq</code> for structured logs and Kubernetes manifests</li>
+<li><code>kubectl</code>, <code>helm</code>, or <code>k9s</code> for cluster context</li>
+<li><code>just</code>, <code>make</code>, or <code>task</code> for repeatable commands</li>
+<li><code>tmux</code> or worktrees for multiple sessions</li>
+</ul>
+<p>The agent is strongest when it can inspect and validate through existing deterministic tools. The best CLI stack is the one that makes context gathering and verification cheap.</p>
+<h3>Remote Control Is Becoming Normal</h3>
+<p>Codex mobile, Claude Code remote control, GitHub Copilot app sessions, and Antigravity CLI all point to the same habit: start work in one place, check progress from another, and keep human approvals timely.</p>
+<p>Use this carefully. Remote approval is useful for unblocking low-risk work, but dangerous for large diffs, schema changes, permissions, secrets, infra changes, or production-impacting operations.</p>
+<p>Rule of thumb:</p>
+<ul>
+<li>Mobile/web check-in: approve reading, planning, tests, documentation, and low-risk follow-ups</li>
+<li>Desktop review: approve code changes, destructive commands, credentials, migrations, Kubernetes changes, and merge decisions</li>
+</ul>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create a personal &quot;delegation contract&quot; and paste it into your agent sessions.</p>
+<pre><code>Before editing:
+- Restate the task boundary
+- List files/services you will inspect
+- Say what you will not touch
+- Define validation
+
+During work:
+- Prefer minimal changes
+- Stop if the task appears broader than requested
+- Ask before destructive commands or dependency changes
+
+After work:
+- Summarize files changed
+- Show validation evidence
+- List remaining risks
+- Suggest follow-ups separately from the completed task</code></pre>
+<p>This one habit should improve your daily efficiency because it reduces review anxiety. You are no longer asking &quot;what did the agent do?&quot; You are asking &quot;did it follow the contract?&quot;</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>MCP 2026-07-28 Release Candidate</h3>
+<p>The MCP maintainers published the 2026-07-28 release candidate on May 21. The headline items are a stateless core, MCP Apps, long-running Tasks, stronger OAuth/OIDC alignment, and a deprecation policy.</p>
+<p>Why it matters: MCP is maturing from local tool wiring into production integration infrastructure. For platform teams, this means MCP servers should be designed like real service surfaces: auth, auditability, versioning, observability, and narrow permissions.</p>
+<h3>GitHub Copilot App Technical Preview</h3>
+<p>GitHub&#x27;s Copilot app preview is notable because it makes agent work more GitHub-native: sessions start from repo context, produce diffs, run validation, open PRs, and can continue through review comments and failing checks.</p>
+<p>Why it matters: GitHub is pushing the agent workflow closer to normal team review mechanics. The useful thing to learn is not another chat UI. It is how to convert issues into agent-ready work units with acceptance criteria.</p>
+<h3>Google Antigravity CLI</h3>
+<p>Google announced Antigravity 2.0 and is encouraging Gemini CLI users to migrate to Antigravity CLI. The important direction is a shared agent harness across desktop, CLI, SDK, and managed agents.</p>
+<p>Why it matters: every major vendor is moving from &quot;CLI wrapper around a model&quot; to &quot;agent platform with a shared harness.&quot; For you, that means the portable skill is not memorizing one tool&#x27;s commands. It is learning how to structure tasks, context, permissions, and validation across tools.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Add this to your next issue, PR comment, or agent prompt:</p>
+<pre><code>Scope:
+- Must change:
+- May inspect:
+- Must not change:
+
+Validation:
+- Required command:
+- Expected evidence:
+- Stop condition:</code></pre>
+<p>This is small, but it directly targets overeager edits and vague agent output.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read Claude Code Power User Tips for application-side workflow ideas. It is full of the habits that matter more than model choice: parallel sessions, planning, skills, memory, hooks, verification, MCP, and remote control.</p>
+<p>Then read Running Codex Safely at OpenAI for the production/security version of the same idea: agents should be productive inside boundaries, with logs and approvals for higher-risk actions.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Try a two-agent review loop on a real but low-risk task.</p>
+<p>1. Implementation agent:</p>
+<pre><code>Implement the smallest change that satisfies this task. Follow the scope contract. Run validation and summarize evidence.</code></pre>
+<p>2. Critic agent:</p>
+<pre><code>Review this diff and validation evidence. Look for over-editing, missing tests, security issues, production risk, and assumptions. Do not rewrite code.</code></pre>
+<p>3. You:</p>
+<p>Merge only if the critic&#x27;s concerns are either addressed or explicitly accepted.</p>
+<p>This is a practical way to get the benefit of parallel agents without letting them run wild.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip ranking posts that say one coding agent is &quot;best&quot; without showing the task, repo, harness, permission settings, validation commands, and failure cases.</p>
+<p>Also skip broad security panic pieces unless they point to concrete mitigations. The useful security takeaway is not &quot;agents are scary.&quot; It is: scope tools narrowly, separate read/write permissions, protect secrets, log actions, and require review for high-risk commands.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openai.com/index/running-codex-safely/">Running Codex safely at OpenAI</a></li>
+<li><a href="https://support.claude.com/en/articles/14554000-claude-code-power-user-tips">Claude Code power user tips</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+<li><a href="https://blog.modelcontextprotocol.io/tags/mcp/">The 2026-07-28 MCP Specification Release Candidate</a></li>
+<li><a href="https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/">GitHub Copilot app technical preview</a></li>
+<li><a href="https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results">Best practices for using GitHub Copilot cloud agent</a></li>
+<li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/">Google I/O 2026 developer highlights</a></li>
+<li><a href="https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Transitioning Gemini CLI to Antigravity CLI</a></li>
+<li><a href="https://arxiv.org/abs/2605.18583">Overeager Coding Agents: Measuring Out-of-Scope Actions on Benign Tasks</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

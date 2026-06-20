@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-05-31</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">May 31, 2026</p>
+<h1>AI Engineering Brief - 2026-05-31</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: coding agents are moving from task assistants to SDLC companions. The useful frontier is not just &quot;generate code faster.&quot; It is using agents across code understanding, migration planning, test coverage, security review, incident follow-up, and daily prioritization. For your workflow, the practical upgrade is to stop treating agents as ad hoc helpers and start giving them repeatable operating roles.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>Three pieces of recent material fit together:</p>
+<ul>
+<li>Anthropic released Claude Opus 4.8 with stronger agentic coding claims and a Claude Code &quot;dynamic workflows&quot; feature aimed at large codebase-scale work.</li>
+<li>OpenAI&#x27;s ChatGPT release notes added Codex computer use and remote control for Windows on May 29, expanding the &quot;check progress and steer remotely&quot; pattern beyond macOS.</li>
+<li>OpenAI&#x27;s &quot;How OpenAI uses Codex&quot; and &quot;Building an AI-native engineering team&quot; guides show how coding agents are being applied across the whole engineering lifecycle: code understanding, refactoring, performance optimization, test coverage, development velocity, staying in flow, and exploration.</li>
+</ul>
+<p>The pattern: agents are becoming less like a single chat box and more like reusable engineering roles.</p>
+<h3>Why It Matters</h3>
+<p>For backend/platform work, the leverage is in recurring workflows:</p>
+<ul>
+<li>Investigate a failure</li>
+<li>Map unfamiliar code</li>
+<li>Draft a migration plan</li>
+<li>Improve tests</li>
+<li>Review a risky diff</li>
+<li>Summarize production symptoms</li>
+<li>Turn an incident into a runbook update</li>
+<li>Clean up technical debt</li>
+</ul>
+<p>You get more value by designing these as repeatable agent workflows than by asking one-off questions.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Give Agents Roles, Not Just Tasks</h3>
+<p>Instead of asking one agent to &quot;help with this bug,&quot; assign a role:</p>
+<ul>
+<li>Investigator: find relevant files, logs, ownership, and hypotheses without editing</li>
+<li>Implementer: make the smallest scoped change and run validation</li>
+<li>Reviewer: inspect the diff, test evidence, and risk</li>
+<li>Documenter: update runbooks, PR descriptions, and follow-up notes</li>
+<li>Migration planner: break a broad change into safe slices</li>
+</ul>
+<p>This reduces prompt ambiguity and lets you reuse the same role prompts across work.</p>
+<h3>2. Use The Test Suite As The Agent&#x27;s Contract</h3>
+<p>Anthropic&#x27;s Opus 4.8 launch frames large migrations around the existing test suite as the bar. That is the right mental model: the agent can do more work when the verification surface is explicit.</p>
+<p>Before delegating larger work, ask:</p>
+<ul>
+<li>Which tests prove this behavior?</li>
+<li>Which tests are missing?</li>
+<li>What should fail before the fix?</li>
+<li>What can be checked locally?</li>
+<li>What needs CI or staging?</li>
+</ul>
+<p>If the answer is unclear, the first agent task should be test discovery, not implementation.</p>
+<h3>3. Turn &quot;Staying In Flow&quot; Into A Workflow</h3>
+<p>OpenAI&#x27;s Codex usage guide highlights &quot;staying in flow&quot; as a real engineering use case. The practical point is that agents can absorb interruption overhead:</p>
+<ul>
+<li>Summarize where you stopped</li>
+<li>List open questions</li>
+<li>Restore the command/test context</li>
+<li>Rebuild the mental map of the code path</li>
+<li>Draft the next step</li>
+</ul>
+<p>This is especially useful after meetings, context switches, or overnight pauses.</p>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>A Practical SDLC Agent Stack</h3>
+<p>For your daily work, think of AI usage in layers:</p>
+<p>1. Context layer: <code>rg</code>, <code>fd</code>, <code>gh</code>, docs, logs, traces, tickets</p>
+<p>2. Planning layer: agent produces scope, hypothesis, risks, test plan</p>
+<p>3. Execution layer: Codex/Claude/Cursor/Aider edits in a branch or worktree</p>
+<p>4. Verification layer: tests, linters, type checks, screenshots, CI, diff review</p>
+<p>5. Memory layer: <code>AGENTS.md</code>, <code>WORKLOG.md</code>, PR notes, runbooks</p>
+<p>The agent should move between layers deliberately. If it jumps from context straight to editing, you lose reviewability.</p>
+<h3>Remote Control Should Be For Steering, Not Rubber-Stamping</h3>
+<p>Codex remote control for Windows and mobile is useful because many agent tasks stall on tiny decisions: approve a safe command, choose between two hypotheses, clarify scope, or ask for more evidence.</p>
+<p>Use remote control for:</p>
+<ul>
+<li>Reading summaries</li>
+<li>Answering clarifying questions</li>
+<li>Approving low-risk inspections</li>
+<li>Redirecting the investigation</li>
+<li>Asking for a smaller diff</li>
+</ul>
+<p>Do not use remote control for:</p>
+<ul>
+<li>Approving migrations</li>
+<li>Merging PRs</li>
+<li>Touching secrets or credentials</li>
+<li>Deploying infra</li>
+<li>Accepting large unexplained diffs</li>
+</ul>
+<p>Remote steering should keep work moving, not weaken review.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create a personal &quot;SDLC roles&quot; snippet and paste it into sessions depending on the job.</p>
+<pre><code>Act as Investigator.
+Goal: understand the issue and produce a concise diagnosis.
+Rules:
+- Do not edit files.
+- Use repo search and available logs/tests.
+- Identify relevant files and likely code paths.
+- List hypotheses with confidence.
+- Recommend the smallest next implementation task.
+- Include validation commands.</code></pre>
+<pre><code>Act as Reviewer.
+Goal: review the diff and evidence before I trust it.
+Rules:
+- Do not rewrite code.
+- Check scope creep, missing tests, risky assumptions, and production impact.
+- Compare changes against the stated task.
+- Say what evidence is enough to merge and what is still missing.</code></pre>
+<p>Start with these two roles. They give immediate productivity benefits because they reduce the two biggest costs of agent work: rediscovering context and reviewing uncertain output.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>Claude Opus 4.8 And Dynamic Workflows</h3>
+<p>Anthropic says Opus 4.8 improves agentic coding and that Claude Code&#x27;s new dynamic workflows can tackle very large migrations with the test suite as the bar. Treat this as a sign that vendors are pushing agents toward larger task graphs and parallel sub-work.</p>
+<p>Practical takeaway: for large tasks, your skill is decomposition. Ask the agent to produce migration slices, dependency order, validation per slice, and rollback points before it edits.</p>
+<h3>Codex Remote Control For Windows</h3>
+<p>OpenAI&#x27;s May 29 ChatGPT release notes say Codex now supports Computer Use on Windows for eligible users, plus remote progress checks from mobile or Codex on Mac while the Windows machine remains the host for files, shell, app server, and local context.</p>
+<p>Practical takeaway: long-running agent work is becoming cross-device. Keep your approval policy explicit so convenience does not turn into accidental trust.</p>
+<h3>OpenAI&#x27;s Codex Usage Guides</h3>
+<p>OpenAI&#x27;s &quot;How OpenAI uses Codex&quot; PDF is one of the best application-side sources right now because it talks about actual engineering use cases rather than generic tool claims. Its categories map well to your work: code understanding, refactoring/migrations, performance optimization, test coverage, development velocity, staying in flow, exploration, and ideation.</p>
+<p>Practical takeaway: use the categories as a menu for your own recurring workflows.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Before asking an agent to implement, ask it to classify the task:</p>
+<pre><code>Classify this task as one of:
+- understand
+- investigate
+- implement
+- refactor
+- migrate
+- test
+- review
+- document
+- automate
+
+Then propose the safest workflow for that category, including stop conditions and validation.</code></pre>
+<p>This makes the agent choose an operating mode instead of treating every request as &quot;start editing.&quot;</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read &quot;How OpenAI uses Codex&quot; as a practical catalog of agent use cases. It is directly aligned with this project because it translates AI coding tools into engineering workflow categories.</p>
+<p>Also skim &quot;Coding Beyond Your Training,&quot; the recent paper studying Claude Code adoption. Treat the numbers cautiously, but the framing is useful: AI coding tools may expand the range of languages, repos, and tasks an individual developer can attempt. The opportunity is broader reach; the risk is broader reach without enough review discipline.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Build a small &quot;Monday restart&quot; workflow for tomorrow morning.</p>
+<p>Prompt:</p>
+<pre><code>Act as my engineering restart assistant.
+Using the current repo state, recent notes, open PRs/issues I provide, and any worklog context:
+- summarize where I left off
+- list the top 3 useful next actions
+- identify one task safe to delegate to an agent
+- identify one task that requires my judgment
+- propose validation for the delegated task</code></pre>
+<p>This is the highest-leverage way to use the weekend/day-boundary: reduce context reload time and start the week with one clean delegation.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip broad claims that one new model &quot;solves coding.&quot; The better question is:</p>
+<ul>
+<li>Does it produce inspectable intermediate artifacts?</li>
+<li>Does it know when not to edit?</li>
+<li>Can it use the test suite effectively?</li>
+<li>Does it leave reviewable evidence?</li>
+<li>Can it resume work without losing context?</li>
+</ul>
+<p>Also skip Reddit-only claims about hidden model changes or usage-limit theories unless backed by official release notes or reproducible behavior. Those threads may be useful as early signals, but they should not drive the brief.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.anthropic.com/news/claude-opus-4-8">Introducing Claude Opus 4.8 - Anthropic</a></li>
+<li><a href="https://www.anthropic.com/claude/opus">Claude Opus 4.8 - Anthropic</a></li>
+<li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes - OpenAI Help Center</a></li>
+<li><a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">How OpenAI uses Codex - OpenAI PDF</a></li>
+<li><a href="https://cdn.openai.com/business-guides-and-resources/building-an-ai-native-engineering-team.pdf">Building an AI-native engineering team - OpenAI PDF</a></li>
+<li><a href="https://openai.com/index/codex-for-almost-everything/">Codex for almost everything - OpenAI</a></li>
+<li><a href="https://openai.com/index/running-codex-safely/">Running Codex safely at OpenAI</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://cursor.com/en-US/changelog">Cursor changelog</a></li>
+<li><a href="https://arxiv.org/abs/2605.25438">Coding Beyond Your Training: Claude Code and the Technological Frontier of Software Developers - arXiv</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

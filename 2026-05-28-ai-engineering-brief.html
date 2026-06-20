@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-05-28</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">May 28, 2026</p>
+<h1>AI Engineering Brief - 2026-05-28</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: agent boundaries are becoming a productivity feature. The newest useful material is less about &quot;agents can code&quot; and more about how to contain, configure, and coordinate them: permission modes, repo instruction files, worktrees, remote sessions, narrow tool surfaces, and explicit stop conditions. For daily engineering work, the practical win is to make agents easier to trust by making their operating box smaller and clearer.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>The last few days reinforce a pattern across Codex, Claude Code, GitHub Copilot, Cursor, Jules, and MCP-style tooling: agent productivity depends on the harness around the model.</p>
+<p>Anthropic&#x27;s May 25 post on containing Claude is the highest-signal read today. It frames containment as a practical engineering problem: limit blast radius through environment design, permissions, monitoring, and product-specific controls. This matches OpenAI&#x27;s Codex safety posture from earlier this month: keep the agent inside clear technical boundaries, make low-risk actions smooth, and stop for review on higher-risk actions.</p>
+<p>The Codex CLI release stream on May 26 also points in the same direction. Recent release notes mention <code>AGENTS.md</code> handling, invalid UTF-8 warnings in instruction files, and multi-agent model-visible description trimming/capping. These are small implementation details, but they are exactly the kind of details that matter when agents become daily tools.</p>
+<h3>Why It Matters</h3>
+<p>The best agent users are not just better prompt writers. They are better environment designers.</p>
+<p>For your work, that means:</p>
+<ul>
+<li>Agents should know the repo rules before they edit</li>
+<li>Agents should see only the tools and context they need</li>
+<li>Risky commands should require explicit approval</li>
+<li>Long-running sessions should leave logs and summaries</li>
+<li>Background or parallel agents should work in isolated branches or worktrees</li>
+<li>The human review point should be designed before the task starts</li>
+</ul>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Add A Pre-Flight Boundary Check</h3>
+<p>Before an agent edits anything, make it declare its boundary.</p>
+<p>Use this prompt:</p>
+<pre><code>Before editing, write a pre-flight boundary check:
+- Task goal
+- Files/directories you expect to inspect
+- Files/directories you are allowed to edit
+- Files/directories you must not edit
+- Commands you may run without asking
+- Commands that require approval
+- Validation evidence you will provide
+
+Wait for confirmation before editing.</code></pre>
+<p>This may feel slower for tiny tasks, but it pays off on anything involving infrastructure, shared libraries, auth, migrations, or production behavior.</p>
+<h3>2. Treat Repo Instruction Files As Source Code</h3>
+<p>Codex, Claude Code, Copilot, Cursor, and related tools all have ways to load project instructions. The Codex release notes mentioning <code>AGENTS.md</code> behavior are a reminder: these files are not casual notes. They shape agent behavior.</p>
+<p>Good repo instruction files should be:</p>
+<ul>
+<li>Short enough to stay useful</li>
+<li>Specific about build/test commands</li>
+<li>Clear about ownership boundaries</li>
+<li>Explicit about dangerous operations</li>
+<li>Updated after repeated agent mistakes</li>
+<li>Reviewed when they affect shared team behavior</li>
+</ul>
+<p>Bad repo instruction files become prompt debt: vague rules, stale commands, hidden assumptions, or conflicting tool-specific instructions.</p>
+<h3>3. Design For &quot;Recoverability&quot;</h3>
+<p>The Claude Code design-space paper is useful because it surfaces the hidden machinery around serious agents: permission modes, compaction, session storage, skills/hooks/plugins/MCP, subagent delegation, and worktree isolation.</p>
+<p>The practical lesson is that agents need recoverable state.</p>
+<p>For your day-to-day workflow, that can be simple:</p>
+<ul>
+<li>Keep a <code>WORKLOG.md</code> for meaningful agent sessions</li>
+<li>Ask the agent to summarize decisions before stopping</li>
+<li>Put risky work in a branch or worktree</li>
+<li>Require a &quot;what I tried / what failed / what remains&quot; section</li>
+<li>Store reusable prompts or skills when a workflow repeats</li>
+</ul>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>Useful CLI Pattern: Inspect, Narrow, Verify</h3>
+<p>The CLI stack that most improves agent work is not exotic. It is the boring inspection-and-verification loop:</p>
+<ul>
+<li><code>rg</code> or <code>fd</code> to find relevant files before editing</li>
+<li><code>git diff</code> to inspect exact changes</li>
+<li><code>gh</code> to pull issue/PR/check context</li>
+<li><code>jq</code> or <code>yq</code> to inspect structured logs, API output, or YAML</li>
+<li><code>kubectl</code> and <code>helm</code> when the work touches cluster state</li>
+<li><code>just</code>, <code>make</code>, or <code>task</code> to avoid guessing validation commands</li>
+</ul>
+<p>Daily rule:</p>
+<blockquote>If the agent cannot show what it inspected and how it verified the result, the task is not done.</blockquote>
+<h3>Background Agents Need Smaller Tasks</h3>
+<p>Cursor&#x27;s 2026 changelog, GitHub&#x27;s Copilot app direction, and Google&#x27;s Jules positioning all show the same movement: async/background agent work is becoming normal.</p>
+<p>The trap is giving background agents broad, fuzzy tasks. Background agents are best for narrow work with clear validation:</p>
+<ul>
+<li>Fix one flaky test</li>
+<li>Update docs after a merged change</li>
+<li>Draft a PR description from the diff</li>
+<li>Find call sites for a deprecated API</li>
+<li>Add a missing unit test for a specific branch</li>
+<li>Investigate one CI failure and summarize likely cause</li>
+</ul>
+<p>They are weaker for ambiguous design, cross-team decisions, security-sensitive changes, and &quot;clean up this repo&quot; style requests.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create a personal <code>agent-task.md</code> scratch template and reuse it whenever you delegate work.</p>
+<pre><code># Agent Task
+
+## Goal
+
+## Context
+
+## Allowed Edits
+
+## Forbidden Edits
+
+## Commands Allowed Without Asking
+
+## Commands Requiring Approval
+
+## Validation
+
+## Stop Conditions
+
+## Review Checklist</code></pre>
+<p>The most important fields are <code>Forbidden Edits</code> and <code>Stop Conditions</code>. They prevent the common failure mode where an agent tries to be helpful by solving adjacent problems.</p>
+<p>Example stop conditions:</p>
+<ul>
+<li>Stop if the fix requires changing public API behavior</li>
+<li>Stop if tests fail for unrelated packages</li>
+<li>Stop if you need credentials, production access, or network calls</li>
+<li>Stop if more than three files need to change</li>
+<li>Stop if the root cause appears to be outside this repository</li>
+</ul>
+<p>This makes delegation cheaper because you do not have to watch the agent constantly. You define the rails up front.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>Anthropic: Containment Across Products</h3>
+<p>Anthropic published a detailed engineering post on how they contain Claude across products. The useful takeaway for engineers is that containment is not one feature. It is a stack: sandboxing, permissioning, environment control, monitoring, and product-specific mitigations.</p>
+<p>For your workflow: separate &quot;read, plan, inspect&quot; permissions from &quot;write, install, deploy, delete&quot; permissions.</p>
+<h3>Codex CLI Releases</h3>
+<p>The May 26 Codex release notes are implementation-level but relevant. <code>AGENTS.md</code> behavior and invalid-instruction-file warnings matter because repo memory is now part of the agent runtime. Multi-agent metadata trimming also hints at a broader reality: when you orchestrate multiple agents/models, the visible context needs curation.</p>
+<p>For your workflow: keep instruction files intentionally small and test them by asking the agent to restate the rules before editing.</p>
+<h3>Cursor, Copilot, And Jules Keep Moving Toward Async Agents</h3>
+<p>Cursor&#x27;s recent changelog highlights multi-agent, worktree, cloud, SSH, and cross-repo workflows. GitHub Copilot&#x27;s app technical preview moves agent tasks closer to issues, PRs, checks, and review comments. Google&#x27;s Jules emphasizes async coding tasks from CLI/API style workflows.</p>
+<p>For your workflow: the portable skill is task shaping. A well-shaped task will work across Codex, Claude Code, Copilot, Cursor, or Jules.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Before your next agent session, ask:</p>
+<pre><code>What is the smallest useful artifact you can produce before editing code?</code></pre>
+<p>Good answers:</p>
+<ul>
+<li>Root-cause summary</li>
+<li>File map</li>
+<li>Test plan</li>
+<li>Risk list</li>
+<li>Minimal patch plan</li>
+<li>Review checklist</li>
+</ul>
+<p>This forces the agent to turn exploration into an inspectable intermediate result before it starts changing files.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read Anthropic&#x27;s &quot;How we contain Claude across products&quot; today. It is valuable because it treats agent safety as product and systems engineering, not as abstract alignment talk.</p>
+<p>Then skim the Codex GitHub releases. The small items around <code>AGENTS.md</code> and multi-agent context are good reminders that daily agent productivity depends on boring runtime details.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Run a &quot;no-edit investigation&quot; on a real work issue.</p>
+<p>Prompt:</p>
+<pre><code>Investigate this issue without editing files.
+Use repo search and available logs/tests to identify:
+- likely root cause
+- relevant files
+- safest minimal fix
+- validation command
+- risks and stop conditions
+
+Do not modify code.</code></pre>
+<p>Then decide whether to launch a second agent session to implement the minimal fix.</p>
+<p>This separates diagnosis from execution, which is one of the easiest ways to reduce agent overreach.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip generic &quot;agent wars&quot; comparisons and broad tool rankings. The useful comparison is not which agent is best in the abstract. It is which workflow gives you:</p>
+<ul>
+<li>Clear task boundaries</li>
+<li>Inspectable intermediate artifacts</li>
+<li>Reliable validation</li>
+<li>Low review overhead</li>
+<li>Safe permission controls</li>
+<li>Recoverable session history</li>
+</ul>
+<p>Also skip community claims about unreleased features unless they link to official changelogs, commits, docs, or reproducible behavior.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.anthropic.com/engineering/how-we-contain-claude">How we contain Claude across products - Anthropic</a></li>
+<li><a href="https://openai.com/index/running-codex-safely/">Running Codex safely at OpenAI</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+<li><a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code best practices</a></li>
+<li><a href="https://arxiv.org/abs/2604.14228">Dive into Claude Code: The Design Space of Today&#x27;s and Future AI Agent Systems - arXiv</a></li>
+<li><a href="https://cursor.com/en/changelog">Cursor changelog</a></li>
+<li><a href="https://cursor.com/changelog/3-0">Cursor 3.0 changelog</a></li>
+<li><a href="https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/">GitHub Copilot app technical preview</a></li>
+<li><a href="https://jules.google/">Jules - Google</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

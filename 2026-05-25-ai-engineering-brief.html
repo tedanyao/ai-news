@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-05-25</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">May 25, 2026</p>
+<h1>AI Engineering Brief - 2026-05-25</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: agent workflows are becoming less like chat sessions and more like operating systems for engineering work. The practical frontier is not just better models. It is durable context, task orchestration, sandboxing, permissions, remote check-ins, and verification loops that let agents work longer without wasting human attention.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>The center of gravity has moved from &quot;Can an agent write code?&quot; to &quot;Can an engineer safely manage many agent-driven tasks without becoming the bottleneck?&quot;</p>
+<p>OpenAI&#x27;s recent Codex updates point in this direction. Codex now emphasizes working across the full software development lifecycle: PR review comments, multiple terminal tabs, remote devboxes over SSH, an in-app browser, plugins, memory, automations, and the ability to carry work forward over days or weeks. OpenAI also says Codex is being used beyond writing code: understanding systems, gathering context, reviewing work, debugging issues, coordinating with teammates, and keeping long-running work moving.</p>
+<p>The Symphony post makes the same point more sharply: when engineers manage several coding-agent sessions by hand, attention becomes the bottleneck. Their answer is to make the issue tracker the control plane. Each open task gets an agent workspace; agents run continuously; humans review the output.</p>
+<h3>Why It Matters</h3>
+<p>For a backend/platform engineer, the winning skill is shifting from &quot;write the perfect prompt&quot; to &quot;design the working environment&quot;:</p>
+<ul>
+<li>Good tickets</li>
+<li>Clear success criteria</li>
+<li>Safe permissions</li>
+<li>Reproducible tests</li>
+<li>Small tool surfaces</li>
+<li>Durable context</li>
+<li>Review checkpoints</li>
+<li>A way to resume or hand off work</li>
+</ul>
+<p>This is much closer to engineering process design than casual prompting.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Treat Tickets As Agent Control Surfaces</h3>
+<p>OpenAI&#x27;s Symphony spec reframes the task tracker as the agent orchestration layer. That is useful even if you are not running a full orchestrator.</p>
+<p>For your own workflow, make tickets agent-ready:</p>
+<ul>
+<li>Expected behavior</li>
+<li>Files or services likely involved</li>
+<li>Build/test command</li>
+<li>Definition of done</li>
+<li>Known risks</li>
+<li>Rollback or validation path</li>
+</ul>
+<p>This lets Codex or Claude Code start with less back-and-forth and gives you a cleaner review target.</p>
+<h3>2. Separate Brain, Hands, And Log</h3>
+<p>Anthropic&#x27;s Managed Agents post describes three durable pieces: the session log, the harness, and the sandbox. The important idea is that the agent&#x27;s memory of what happened should survive failures, while the execution environment can be replaced.</p>
+<p>For daily coding work, the lightweight version is:</p>
+<ul>
+<li><code>WORKLOG.md</code> for what the agent tried and learned</li>
+<li><code>AGENTS.md</code> for repo-specific instructions</li>
+<li>Separate worktrees or branches for risky tasks</li>
+<li>A validation section at the end of every agent task</li>
+</ul>
+<p>This gives you continuity without needing a full agent platform.</p>
+<h3>3. Use A Critic Step Before You Run With The Answer</h3>
+<p>At Code with Claude, Anthropic discussed patterns such as advisor and critic models. The practical version is simple: after the agent plans or implements something, ask a second pass to inspect it for missing cases, unsafe assumptions, or bad tests before you accept it.</p>
+<p>Useful prompt:</p>
+<pre><code>Review this plan/change as a skeptical senior engineer. Focus on hidden assumptions, edge cases, production risks, and missing verification. Do not rewrite it yet.</code></pre>
+<p>This is especially useful for migrations, incident fixes, Kubernetes changes, auth changes, and anything touching shared libraries.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Build a 10-minute daily &quot;agent standup&quot; for yourself.</p>
+<p>At the start of the workday, ask your agent to produce:</p>
+<pre><code>Given my current repo state, open tasks, recent notes, and today&#x27;s priorities, propose a work plan.
+For each item, say:
+- what context you need
+- whether you can work independently
+- what command or test will verify progress
+- where I should review before you continue</code></pre>
+<p>Then choose one task that is safe to delegate. The goal is not to let the agent run your whole day. The goal is to make delegation a habit:</p>
+<ul>
+<li>You keep judgment</li>
+<li>The agent gathers context</li>
+<li>You review at explicit checkpoints</li>
+<li>The worklog accumulates useful memory</li>
+</ul>
+<p>This should compound quickly for repetitive engineering work: bug investigation, flaky tests, PR cleanup, docs, runbook updates, release notes, and small refactors.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>Codex Mobile And Remote Check-Ins</h3>
+<p>OpenAI released Codex in the ChatGPT mobile app preview on May 14, 2026. The useful detail is not &quot;coding on your phone.&quot; It is keeping long-running work unblocked: review outputs, approve commands, change direction, inspect diffs, see test results, and keep the active session synced while files and credentials remain on the trusted machine.</p>
+<p>This reinforces a larger pattern: agents increasingly need timely human judgment, not constant supervision.</p>
+<h3>MCP Is Becoming Production Infrastructure</h3>
+<p>MCP continues to move from local developer novelty toward production integration infrastructure. The recent MCP release-candidate discussion around stateless operation, tasks, MCP Apps, authorization hardening, and deprecation policy matters because agent tools need to survive real deployment constraints: load balancing, long-running work, auth, observability, and version changes.</p>
+<p>For your workflow, the practical question is:</p>
+<blockquote>Which internal systems would become more useful if an agent could safely query them through a narrow, read-only tool?</blockquote>
+<p>Candidates:</p>
+<ul>
+<li>Service catalog</li>
+<li>Deployment history</li>
+<li>Kubernetes events</li>
+<li>Incident notes</li>
+<li>Runbooks</li>
+<li>Feature flags</li>
+<li>CI status</li>
+</ul>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>For your next agent-assisted task, require this output format:</p>
+<pre><code>Plan:
+- What I will inspect
+- What I expect to change
+- How I will validate it
+
+Result:
+- Files changed
+- Tests or checks run
+- Evidence that it worked
+- Remaining risks
+- Follow-up suggestion</code></pre>
+<p>This single habit makes agent work easier to review and reduces the fuzzy feeling of &quot;it changed some stuff and sounds confident.&quot;</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read OpenAI&#x27;s Symphony post if you only read one thing today. The durable insight is that coding-agent productivity breaks when the human has to babysit sessions. The next workflow layer is issue-driven orchestration: tasks, states, dependencies, and review gates.</p>
+<p>Also worth saving: Anthropic&#x27;s Managed Agents post. It gives a clean mental model for long-running agents: session, harness, sandbox. That model is directly applicable to platform engineering.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Create an &quot;agent-ready ticket&quot; template for your own work.</p>
+<pre><code>## Goal
+
+## Context
+
+## Likely Files / Services
+
+## Constraints
+
+## Validation
+
+## Risks
+
+## Review Checkpoint</code></pre>
+<p>Use it for one real task this week. Give it to Codex or Claude Code and compare the output quality against a loosely written request.</p>
+<p>For platform/backend work, this is especially useful for:</p>
+<ul>
+<li>Go service refactors</li>
+<li>Kubernetes manifest changes</li>
+<li>CI failures</li>
+<li>API behavior changes</li>
+<li>incident follow-ups</li>
+<li>dependency upgrades</li>
+</ul>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip generic &quot;which coding agent wins?&quot; posts unless they show the task, repo, prompts, tests, failure modes, and review process. The more useful comparison is not model versus model. It is workflow versus workflow.</p>
+<p>Also be careful with big productivity claims. SWE-Chain, a new benchmark for chained package upgrades, found that current agents still struggle with release-level maintenance across multiple versions. That is a good reminder: agents are getting powerful, but verification and incremental review still matter.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://openai.com/index/codex-for-almost-everything/">Codex for almost everything - OpenAI</a></li>
+<li><a href="https://openai.com/index/work-with-codex-from-anywhere/">Work with Codex from anywhere - OpenAI</a></li>
+<li><a href="https://openai.com/index/open-source-codex-orchestration-symphony/">An open-source spec for Codex orchestration: Symphony - OpenAI</a></li>
+<li><a href="https://openai.com/index/harness-engineering/">Harness engineering: leveraging Codex in an agent-first world - OpenAI</a></li>
+<li><a href="https://www.anthropic.com/engineering/managed-agents">Scaling Managed Agents: Decoupling the brain from the hands - Anthropic</a></li>
+<li><a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code best practices - Anthropic</a></li>
+<li><a href="https://www.infoq.com/news/2026/05/code-with-claude/">Code with Claude 2026 recap - InfoQ</a></li>
+<li><a href="https://arxiv.org/abs/2605.14415">SWE-Chain: Benchmarking Coding Agents on Chained Release-Level Package Upgrades - arXiv</a></li>
+<li><a href="https://mcp.directory/blog/mcp-2026-07-28-release-candidate">MCP 2026-07-28 release candidate explainer - MCP.Directory</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>

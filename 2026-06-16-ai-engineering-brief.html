@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-06-16</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">June 16, 2026</p>
+<h1>AI Engineering Brief - 2026-06-16</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: long-running agent work needs durable environments and measurable configuration. The strongest recent pattern is that agents are no longer just one-shot coding helpers; they are becoming persistent workers that need stable context, sandboxed execution, dependency policy, and evaluation loops. For your daily workflow, the practical upgrade is to make every non-trivial agent task reproducible: same inputs, same constraints, same validation, same review artifact.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>Recent sources point to the same direction from different angles:</p>
+<ul>
+<li>OpenAI&#x27;s reported plan to acquire Ona, a startup focused on secure persistent agent environments, reinforces that Codex-style work is moving toward long-running cloud workspaces where agents can keep context and continue over time.</li>
+<li>A new empirical study of 2,926 repositories found that context files dominate agent configuration, with <code>AGENTS.md</code> emerging as an interoperable standard across tools, while advanced mechanisms like Skills and Subagents are still shallowly adopted.</li>
+<li>A new build-versus-buy study protocol targets exactly the behavior engineers should care about: how configuration changes whether agents add dependencies or implement from scratch.</li>
+<li>Recent reproducibility papers show coding agents can execute complex computational workflows, but remain vulnerable to framing and interpretation errors.</li>
+</ul>
+<p>The pattern: the next productivity jump is not &quot;ask a stronger model.&quot; It is building a better agent operating environment.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Make Agent Tasks Reproducible</h3>
+<p>If an agent task matters, it should be possible to replay or audit it.</p>
+<p>Use a task record like this:</p>
+<pre><code># Agent Task Record
+
+## Goal
+
+## Inputs
+
+## Allowed Context
+
+## Constraints
+
+## Dependency Policy
+
+## Commands Run
+
+## Validation Evidence
+
+## Final Diff / Artifact
+
+## Remaining Risks</code></pre>
+<p>This is lightweight, but it changes the review dynamic. You are no longer reviewing a mysterious transcript; you are reviewing a structured experiment.</p>
+<h3>2. Promote <code>AGENTS.md</code> From Notes To Contract</h3>
+<p>The configuration study found that context files are the dominant repo-level configuration mechanism, and <code>AGENTS.md</code> is becoming a cross-tool convention.</p>
+<p>Treat <code>AGENTS.md</code> as a contract:</p>
+<ul>
+<li>What commands validate the repo</li>
+<li>Which directories are sensitive</li>
+<li>Which files require human review</li>
+<li>Which dependency changes need approval</li>
+<li>Which tools are allowed</li>
+<li>Which tasks should start read-only</li>
+<li>What the agent must report after work</li>
+</ul>
+<p>The mistake is making <code>AGENTS.md</code> a long philosophy essay. Keep it operational.</p>
+<h3>3. Turn Build-Versus-Buy Into A Review Gate</h3>
+<p>The build-versus-buy protocol is useful because it names a real agent risk: agents may add libraries because it is easier than reasoning through existing code.</p>
+<p>For backend/platform work, add a strict review gate:</p>
+<pre><code>New dependencies require approval.
+Before proposing one, explain:
+- why existing dependencies are insufficient
+- why standard library support is insufficient
+- security and licensing implications
+- transitive dependency risk
+- maintenance burden
+- rollback plan</code></pre>
+<p>This belongs in repo instructions, not just one-off prompts.</p>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>Persistent Environments Need Checkpoints</h3>
+<p>If Codex and other agents increasingly run in persistent environments, the useful personal habit is checkpointing.</p>
+<p>After every meaningful step, the agent should record:</p>
+<ul>
+<li>Current hypothesis</li>
+<li>Files inspected</li>
+<li>Files changed</li>
+<li>Commands run</li>
+<li>Evidence collected</li>
+<li>Next action</li>
+<li>Stop condition</li>
+</ul>
+<p>Persistent context is only helpful if it is legible. Otherwise, it becomes a long-running mess with memory.</p>
+<h3>Use Agents For Execution, But Keep Interpretation Human-Led</h3>
+<p>The recent social-science reproducibility papers are not software-engineering papers, but they contain a strong lesson for engineering: agents can execute workflows and reproduce outputs, but prompt framing can shape interpretation.</p>
+<p>Translate that to engineering:</p>
+<ul>
+<li>Let agents gather evidence</li>
+<li>Let agents run tests</li>
+<li>Let agents produce candidate explanations</li>
+<li>Be careful when agents declare &quot;root cause,&quot; &quot;safe to merge,&quot; or &quot;production risk is low&quot;</li>
+</ul>
+<p>Execution can be delegated earlier than judgment.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create a reusable &quot;agent experiment&quot; prompt for non-trivial work.</p>
+<pre><code>Treat this as a reproducible agent experiment.
+
+Before editing:
+- restate the goal
+- list available inputs
+- list constraints
+- state dependency policy
+- define validation
+
+During work:
+- keep a task record
+- prefer read-only investigation first
+- stop before expanding scope
+
+After work:
+- summarize commands run
+- provide validation evidence
+- list risks and rejected alternatives
+- say whether the task can be reproduced from the record</code></pre>
+<p>Use it when the work touches shared code, infra, dependencies, security, migrations, or production behavior.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>Persistent Agent Environments</h3>
+<p>OpenAI&#x27;s reported Ona acquisition is worth watching because it points at a missing layer in agent workflows: secure, persistent environments that can keep context and continue work while the user is offline.</p>
+<p>Why it matters: platform teams may eventually need to reason about agent workspaces like developer workspaces: identity, permissions, secrets, network access, compute cost, logs, cleanup, and retention.</p>
+<h3>Configuration Research</h3>
+<p>The agent-configuration study is high-signal because it shifts the conversation from anecdotes to observable repo artifacts. It found that context files dominate, <code>AGENTS.md</code> is emerging across tools, and advanced mechanisms like Skills/Subagents are still early.</p>
+<p>Why it matters: if you want better agent output, start with boring repo configuration before adding fancy orchestration.</p>
+<h3>Coding Agents As Reproducibility Engines</h3>
+<p>Recent papers on social-science reproduction and scientific workflows show that Claude Code and Codex can execute non-trivial computational tasks, sometimes impressively. But they also show vulnerability around prompt framing, interpretation, and confirmatory behavior.</p>
+<p>Why it matters: agents are becoming reliable executors before they become reliable judges.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Add this compact section to your repo instruction file:</p>
+<pre><code>## Agent Review Requirements
+
+- Start medium-risk tasks with read-only investigation.
+- Do not add dependencies without approval.
+- Record commands run and validation evidence.
+- Report unrelated findings as follow-ups, not extra edits.
+- Stop before changing public APIs, auth, infra, or deployment behavior.
+- End with remaining risks and reproduction steps.</code></pre>
+<p>This is a small change with high leverage.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read &quot;Configuring Agentic AI Coding Tools: An Exploratory Study.&quot; It is directly aligned with this project because it studies the configuration layer that practitioners actually control: context files, Skills, Subagents, and tool-specific repo artifacts.</p>
+<p>Then skim the build-versus-buy protocol. Even though it is a study design, it gives you a practical checklist for dependency governance in agent-assisted development.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Run a 30-minute repo configuration audit.</p>
+<p>Prompt:</p>
+<pre><code>Inspect this repository for agent configuration.
+Do not edit files.
+Find:
+- AGENTS.md / CLAUDE.md / rules files
+- build and test commands
+- sensitive directories
+- dependency files
+- CI configuration
+- areas where agent edits should require approval
+
+Return a proposed minimal AGENTS.md.</code></pre>
+<p>Then review the proposed file yourself and add only the parts that are truly operational.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip any &quot;agent X beats agent Y&quot; post that does not describe the harness, configuration, task type, validation, and review process.</p>
+<p>Also skip tool adoption advice that ignores persistence risk. A long-running agent environment needs logs, permissions, cleanup, dependency policy, credential boundaries, and human review points.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.techradar.com/pro/openais-latest-acquisition-could-see-big-changes-on-the-way-for-its-codex-coding-assistant">OpenAI&#x27;s latest acquisition could see big changes on the way for its Codex coding assistant - TechRadar</a></li>
+<li><a href="https://openai.com/index/codex-for-every-role-tool-workflow/">Codex for every role, tool, and workflow - OpenAI</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://arxiv.org/abs/2602.14690">Configuring Agentic AI Coding Tools: An Exploratory Study - arXiv</a></li>
+<li><a href="https://arxiv.org/abs/2606.03907">The Impact of Configuring Agentic AI Coding Tools on Build-vs-Buy Decisions - arXiv</a></li>
+<li><a href="https://arxiv.org/abs/2606.11447">AI Coding Agents Can Reproduce Social Science Findings - arXiv</a></li>
+<li><a href="https://arxiv.org/abs/2606.11456">AI Coding Agents in Social Science: Methodologically Diverse, Empirically Consistent, Interpretively Vulnerable - arXiv</a></li>
+<li><a href="https://arxiv.org/abs/2606.13715">WorkBench Revisited: Workplace Agents Two Years On - arXiv</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>
