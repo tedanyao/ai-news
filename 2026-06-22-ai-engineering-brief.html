@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Engineering Brief - 2026-06-22</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d9e2ec;
+      --page: #f6f7f9;
+      --article: #ffffff;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --gray: #4b5563;
+      --gray-bg: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 32px auto 56px;
+      background: var(--article);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 40px 52px 48px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      color: #111827;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.42rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p, ul, blockquote, pre { margin-top: 0; }
+    p, ul, blockquote { margin-bottom: 18px; }
+    ul { padding-left: 1.35rem; }
+    li + li { margin-top: 4px; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 0.1rem 0.3rem;
+      font-size: 0.9em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--line);
+      color: #334155;
+      margin-left: 0;
+      padding: 4px 0 4px 18px;
+    }
+
+    .section {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .section-standard {
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-summary {
+      background: var(--blue-bg);
+      border-color: #bfdbfe;
+      border-left: 5px solid var(--blue);
+      font-size: 1.06rem;
+    }
+
+    .section-action {
+      background: var(--green-bg);
+      border-color: #bbf7d0;
+      border-left: 5px solid var(--green);
+    }
+
+    .section-watch {
+      background: var(--amber-bg);
+      border-color: #fde68a;
+      border-left: 5px solid var(--amber);
+    }
+
+    .section-skip {
+      background: var(--gray-bg);
+      border-color: #e5e7eb;
+      border-left: 5px solid var(--gray);
+      color: #374151;
+    }
+
+    .section-sources {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .section-sources ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
+    .section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+      }
+      .section {
+        padding: 18px;
+      }
+      .section-standard {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .section-sources ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">June 22, 2026</p>
+<h1>AI Engineering Brief - 2026-06-22</h1>
+<section class="section section-summary">
+<h2>Summary</h2>
+<p>Today&#x27;s signal: &quot;loop engineering&quot; is becoming the practical next step after prompt engineering. The useful version is not telling an agent to keep working forever; it is designing a bounded loop with a goal, worktree, skill/tool set, reviewer, budget, stop condition, and audit trail. For your daily workflow, the practical upgrade is to convert repeated tasks into small, reviewable loops rather than larger autonomous blobs.</p>
+</section>
+<section class="section section-standard">
+<h2>Today&#x27;s Signal</h2>
+<p>A Business Insider piece from June 20 pushed &quot;loop engineering&quot; into mainstream AI tooling discourse. The article is secondary, but it collects a useful practitioner pattern: engineers are moving from repeatedly typing prompts to designing recurring agent loops. The examples are familiar from this project: automations, worktrees, skills, plugins/connectors, and subagents.</p>
+<p>The timing matters because the past week of primary-source updates tells us what good loops need:</p>
+<ul>
+<li>Claude Code added stronger auto-mode safety around destructive git and infrastructure commands.</li>
+<li>Claude Code also fixed scheduled/webhook deliveries so they cannot approve pending actions.</li>
+<li>Codex 0.141.0 added encrypted remote-execution relay channels and per-thread MCP activation.</li>
+<li>ABTest research shows real coding-agent failures can be converted into repository-grounded behavioral tests.</li>
+</ul>
+<p>The pattern: loops are powerful, but only when they are inspectable and interruptible.</p>
+</section>
+<section class="section section-standard">
+<h2>Agent Workflow Improvements</h2>
+<h3>1. Design Loops As Jobs, Not Prompts</h3>
+<p>A useful loop should have a job definition:</p>
+<pre><code># Agent Loop
+
+## Goal
+
+## Trigger
+
+## Inputs
+
+## Worktree / Runtime
+
+## Allowed Tools
+
+## Blocked Tools
+
+## Reviewer / Critic Step
+
+## Budget
+
+## Stop Conditions
+
+## Output Artifact</code></pre>
+<p>This turns a vague &quot;keep working on this&quot; request into something closer to a CI job or background worker.</p>
+<h3>2. Put A Critic Inside The Loop</h3>
+<p>The common pattern is &quot;one agent writes, another checks.&quot; This is useful, but only if the critic is scoped.</p>
+<p>Good critic prompt:</p>
+<pre><code>Review the current loop output.
+Focus only on:
+- scope creep
+- destructive commands
+- missing validation
+- dependency additions
+- security or infra risk
+- whether the stop condition has been met
+
+Do not rewrite code. Return findings and confidence.</code></pre>
+<p>The critic should not become a second autonomous implementer unless you explicitly approve that.</p>
+<h3>3. Convert Failures Into Regression Tests For The Loop</h3>
+<p>ABTest is useful because it reframes agent failures as behavior-driven tests. You do not need the full framework to adopt the habit.</p>
+<p>When an agent loop fails, record:</p>
+<ul>
+<li>What trigger started the loop</li>
+<li>What the agent was allowed to do</li>
+<li>What action was wrong</li>
+<li>What evidence would have caught it earlier</li>
+<li>What instruction, permission rule, or validation should prevent recurrence</li>
+</ul>
+<p>Then update the loop definition.</p>
+</section>
+<section class="section section-standard">
+<h2>Application-Side Practices</h2>
+<h3>Start With Maintenance Loops</h3>
+<p>The safest loops are not &quot;build a feature while I sleep.&quot; They are repeated maintenance tasks with clear evidence.</p>
+<p>Good first loops:</p>
+<ul>
+<li>Summarize open PRs and failing checks every morning</li>
+<li>Triage one CI failure and produce hypotheses</li>
+<li>Search for stale TODOs in one package and propose cleanup</li>
+<li>Draft release notes from merged PRs</li>
+<li>Review dependency updates and flag risk</li>
+<li>Produce a weekly <code>WORKLOG.md</code> summary</li>
+</ul>
+<p>Avoid first loops like:</p>
+<ul>
+<li>Refactor the whole service</li>
+<li>Keep improving until the code is good</li>
+<li>Fix all flaky tests</li>
+<li>Update all dependencies</li>
+<li>Clean up Kubernetes manifests</li>
+</ul>
+<p>Those are too broad unless decomposed.</p>
+<h3>Budget Is A Design Constraint</h3>
+<p>Loops can quietly burn tokens because they combine scheduling, subagents, tool calls, and review passes. Treat budget as part of the task.</p>
+<p>Useful loop budget rules:</p>
+<ul>
+<li>Run at most N iterations</li>
+<li>Stop after N minutes</li>
+<li>Stop after N files changed</li>
+<li>Use a cheaper model for triage</li>
+<li>Use a stronger model only for critic review</li>
+<li>Summarize and stop when confidence is low</li>
+<li>Never spawn subagents without a specific reason</li>
+</ul>
+<p>Efficiency comes from better loop design, not just more automation.</p>
+</section>
+<section class="section section-standard">
+<h2>Daily Workflow Upgrade</h2>
+<p>Create one tiny &quot;morning triage loop&quot; for yourself.</p>
+<pre><code>Goal:
+Summarize what needs attention this morning.
+
+Inputs:
+- open PRs/issues I provide
+- local repo status
+- recent WORKLOG.md notes
+
+Allowed:
+- read files
+- inspect git status/log/diff
+- summarize
+
+Blocked:
+- editing files
+- running destructive commands
+- network calls unless approved
+
+Output:
+- top 3 priorities
+- one safe agent-delegatable task
+- one task requiring my judgment
+- suggested validation for the delegatable task</code></pre>
+<p>This is a good starter loop because it improves daily efficiency without handing over risky actions.</p>
+</section>
+<section class="section section-watch">
+<h2>Tool Or Release Watch</h2>
+<h3>Loop Engineering Discourse</h3>
+<p>The mainstream loop-engineering discussion is useful mainly as a vocabulary shift. The substance is not new: repeated agent work needs automations, worktrees, skills, plugins/connectors, subagents, critics, and budgets.</p>
+<p>Why it matters: if your team starts using this language, push for operational loop specs rather than vague autonomous-agent enthusiasm.</p>
+<h3>Claude Code 2.1.185</h3>
+<p>Claude Code 2.1.185 changed its stream-stall hint to wait longer before warning and to describe retry behavior more accurately. This is a small UI change, but it fits the broader reliability theme: long-running agent sessions need clear state signals.</p>
+<p>Why it matters: loops fail when users cannot tell whether the agent is stuck, waiting, retrying, or working.</p>
+<h3>Codex 0.142 Alpha Stream</h3>
+<p>Codex has multiple 0.142 alpha releases from June 19-21 after the 0.141.0 stable release. The release page exposes limited details for the alphas, so treat them as a signal of rapid runtime iteration rather than a source of specific workflow advice.</p>
+<p>Why it matters: pin stable versions for serious loops. Fast-moving agent runtimes can change permissions, MCP behavior, remote execution, or session semantics.</p>
+</section>
+<section class="section section-action">
+<h2>Applied Tip</h2>
+<p>Before turning any repeated prompt into a loop, ask:</p>
+<pre><code>What is the stop condition?
+What evidence proves progress?
+What action is forbidden?
+What is the budget?
+Who reviews the output?
+What should happen if the agent is uncertain?</code></pre>
+<p>If you cannot answer these, it is not ready to become a loop.</p>
+</section>
+<section class="section section-standard">
+<h2>Deeper Read</h2>
+<p>Read the Business Insider loop-engineering piece as a trend signal, not as the authority. The useful takeaway is that experienced agent users are designing repeatable systems around agents.</p>
+<p>Then read ABTest. It is the stronger engineering counterpart: real-world agent failures can become behavior-driven tests. That is how loops get safer over time.</p>
+</section>
+<section class="section section-action">
+<h2>Workflow To Try</h2>
+<p>Turn one repeated work habit into a loop spec without automating it yet.</p>
+<p>Pick one:</p>
+<ul>
+<li>morning triage</li>
+<li>PR review prep</li>
+<li>CI failure investigation</li>
+<li>release note drafting</li>
+<li>runbook update after an incident</li>
+<li>weekly worklog summary</li>
+</ul>
+<p>Write only the loop spec:</p>
+<pre><code>## Trigger
+
+## Inputs
+
+## Allowed Actions
+
+## Forbidden Actions
+
+## Validation
+
+## Stop Conditions
+
+## Output</code></pre>
+<p>Run it manually with an agent once. Only automate it after the output is consistently useful.</p>
+</section>
+<section class="section section-skip">
+<h2>Skip Today</h2>
+<p>Skip loop hype that does not mention stop conditions, budget, review, worktree/runtime isolation, destructive-command policy, and failure handling.</p>
+<p>Also skip advice that says prompts are &quot;over.&quot; Prompts still matter; they are just moving into reusable loop specs, skills, repo instructions, and job records.</p>
+</section>
+<section class="section section-sources">
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.businessinsider.com/what-are-loops-ai-engineering-tips-2026-6">Forget prompt engineering: &#x27;Loop engineering&#x27; is all the rage now - Business Insider</a></li>
+<li><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></li>
+<li><a href="https://github.com/openai/codex/releases">Codex releases - GitHub</a></li>
+<li><a href="https://openai.com/index/running-codex-safely/">Running Codex safely at OpenAI</a></li>
+<li><a href="https://arxiv.org/abs/2604.03362">ABTest: Behavior-Driven Testing for AI Coding Agents - arXiv</a></li>
+<li><a href="https://arxiv.org/abs/2602.14690">Configuring Agentic AI Coding Tools: An Exploratory Study - arXiv</a></li>
+</ul>
+</section>
+  </main>
+</body>
+</html>
